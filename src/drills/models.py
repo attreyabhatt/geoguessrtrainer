@@ -21,18 +21,3 @@ class Country(models.Model):
         return self.name
 
 
-class DrillSession(models.Model):
-    """Track a single drill session"""
-    
-    started_at = models.DateTimeField(auto_now_add=True)
-    completed_at = models.DateTimeField(null=True, blank=True)
-    correct_answers = models.IntegerField(default=0)
-    total_questions = models.IntegerField(default=0)
-    
-    def accuracy(self):
-        if self.total_questions == 0:
-            return 0
-        return (self.correct_answers / self.total_questions) * 100
-    
-    def __str__(self):
-        return f"Session {self.id} - {self.started_at.strftime('%Y-%m-%d %H:%M')}"

@@ -1,11 +1,17 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Home - GeoGuessr Trainer{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center">Welcome to GeoGuessr Trainer</h1>
-        <p class="text-center">Enhance your geographical guessing skills with our interactive trainer.</p>
-        <div class="d-flex justify-content-center mt-4">
-            <a href="/start" class="btn btn-primary btn-lg">Driving side</a>
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drive-on-the-left-kent-1b.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Driving Direction</h5>
+            <p class="card-text">The direction of driving is an important factor in GeoGuessr. It is important to know which side of the road you should
+            be driving on</p>
+            <a href="{% url 'driving_direction' %}" class="btn btn-primary">Take a drive</a>
         </div>
     </div>
+</div>
 {% endblock %}
