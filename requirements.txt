@@ -1,2 +1,6 @@
 Django==5.2.7
 gunicorn
+python-decouple
+psycopg[binary]
+dj-database-url
+requests
