@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,7 +85,7 @@ DATABASES = {
     }
 }
 
-CONN_MAX_AGE = config("CONN_MAX_AGE",cast=int,default=30)
+CONN_MAX_AGE = config("CONN_MAX_AGE",cast=int,default=600)
 DATABASE_URL = config("DATABASE_URL",default=None)
 
 if DATABASE_URL is not None:

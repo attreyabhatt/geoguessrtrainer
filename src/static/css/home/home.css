@@ -1,0 +1,48 @@
+/* Consistent responsive card images */
+.card-img-responsive {
+    height: 140px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+@media (min-width: 576px) {
+    .card-img-responsive {
+        height: 160px;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-img-responsive {
+        height: 180px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-img-responsive {
+        height: 200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-img-responsive {
+        height: 220px;
+    }
+}
+
+/* Card hover effects */
+.profit-card {
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.profit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional fade animation (if using AOS.js) */
+[data-aos] {
+    opacity: 0;
+    transition-property: transform, opacity;
+}

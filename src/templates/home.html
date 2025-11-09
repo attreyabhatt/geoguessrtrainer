@@ -4,14 +4,33 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="card" style="width: 18rem;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drive-on-the-left-kent-1b.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Driving Direction</h5>
-            <p class="card-text">The direction of driving is an important factor in GeoGuessr. It is important to know which side of the road you should
-            be driving on</p>
-            <a href="{% url 'driving_direction' %}" class="btn btn-primary">Take a drive</a>
+    <div class="row justify-content-center g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drive-on-the-left-kent-1b.jpg" class="card-img-top" height="180"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Driving Direction</h5>
+                    <p class="card-text">The direction of driving is an important factor in GeoGuessr. It is important to know which
+                        side of the road you should
+                        be driving on</p>
+                    <a href="{% url 'driving_direction' %}" class="btn btn-primary">Take a drive</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="https://www.geoguessr.com/images/resize:auto:384:384/gravity:ce/plain/quiz/6b0b9a78859586ff998c120022f7ad82.jpg"
+                    class="card-img-top" height="180" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Fun with Flags</h5>
+                    <p class="card-text">Flags are a key element in GeoGuessr. Knowing the flags of different countries can make all the difference in identifying your location.</p>
+                    <a href="{% url 'fun_with_flags' %}" class="btn btn-primary">Guess the Flag</a>
+                </div>
+            </div>
         </div>
     </div>
+    
+
 </div>
 {% endblock %}
