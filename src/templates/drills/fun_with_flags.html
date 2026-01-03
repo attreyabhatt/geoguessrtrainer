@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Fun with Flags - GeoGuessr Trainer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/drills/common.css' %}">
+<link rel="stylesheet" href="{% static 'css/drills/fun_with_flags.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="w-100">
+        <div class="row justify-content-center">
+            <!-- Main Content Column (Left) -->
+            <div class="col-12 col-lg-8">
+                <!-- Main Drill Card -->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <!-- Flag Display -->
+                        <div class="row">
+                            <div class="col-12 text-center mb-3">
+                                <img src="{{ country.flag_url }}" alt="Flag" class="flag-image" id="flag-image"
+                                    loading="eager" decoding="sync">
+                            </div>
+                        </div>
+
+                        <!-- Question -->
+                        <div class="row">
+                            <div class="col-12 text-center mb-3">
+                                <p class="question-text mb-0">Which country does this flag belong to?</p>
+                            </div>
+                        </div>
+
+                        <!-- Answer Input with Autocomplete -->
+                        <div class="row mb-3" id="answer-section">
+                            <div class="col-12">
+                                <div class="input-wrapper">
+                                    <input type="text" class="form-control answer-input" id="country-input"
+                                        placeholder="Type country name..." autocomplete="off" autofocus>
+                                    <div id="autocomplete-list" class="autocomplete-items"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit and Skip Buttons -->
+                        <div class="row g-2 mb-3" id="button-section">
+                            <div class="col-12 col-md-6">
+                                <button class="btn btn-primary submit-btn w-100" id="submit-btn" type="button">
+                                    Submit Answer
+                                </button>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <button class="btn btn-outline-secondary skip-btn w-100" id="skip-btn" type="button">
+                                    Skip Question
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Result Display -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="result-container" id="result-container">
+                                    <div class="result-message d-flex align-items-center justify-content-center gap-2"
+                                        id="result-message"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Back to Home -->
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <a href="{% url 'home' %}" class="btn btn-sm btn-outline-secondary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Column (Right) -->
+            <div class="col-12 col-lg-4 mt-4 mt-lg-0">
+                <!-- Stats Header with Reset Button -->
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0 text-muted small">Session Stats</h6>
+                    <button class="btn btn-outline-danger btn-reset" id="reset-stats" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                            <path
+                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+                        </svg>
+                        Reset
+                    </button>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="row g-2 mb-3">
+                    <div class="col-4 col-lg-12">
+                        <div class="stat-box">
+                            <div class="stat-label">Correct</div>
+                            <div class="stat-value" id="correct-count">0</div>
+                        </div>
+                    </div>
+                    <div class="col-4 col-lg-12">
+                        <div class="stat-box">
+                            <div class="stat-label">Total</div>
+                            <div class="stat-value" id="total-count">0</div>
+                        </div>
+                    </div>
+                    <div class="col-4 col-lg-12">
+                        <div class="stat-box">
+                            <div class="stat-label">Accuracy</div>
+                            <div class="stat-value" id="accuracy">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Card -->
+                <div class="card">
+                    <div class="card-header p-2">
+                        <div class="fw-semibold p-2">dY'­ Tips</div>
+                    </div>
+                    <div class="card-body p-3">
+                        <ul class="mb-0 small" style="padding-left: 1.2rem;">
+                            <li class="mb-2">Start typing and suggestions will appear</li>
+                            <li class="mb-2">Press <kbd>Enter</kbd> to submit your answer</li>
+                            <li class="mb-2">Use <kbd>Up</kbd> <kbd>Down</kbd> arrows to navigate suggestions</li>
+                            <li>Press <kbd>Esc</kbd> to skip to the next flag</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Hidden data for JavaScript -->
+<div id="country-data" data-country="{{ country.name }}" style="display: none;"></div>
+
+<!-- All Countries Data for Autocomplete -->
+{{ all_countries|json_script:"countries-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/drills/common_stats.js' %}"></script>
+<script src="{% static 'js/drills/fun_with_flags.js' %}"></script>
+{% endblock %}

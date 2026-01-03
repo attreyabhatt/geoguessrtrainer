@@ -1,143 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Driving Direction - GeoGuessr Trainer{% endblock %}
 
 {% block extra_css %}
-<style>
-    /* Center content vertically */
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .container {
-        flex: 1;
-        display: flex;
-        align-items: center;
-    }
-
-    .stat-box {
-        padding: 0.4rem 0.8rem;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .stat-label {
-        font-size: 0.75rem;
-        color: #6c757d;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .stat-value {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    .flag-image {
-        max-width: 100%;
-        height: auto;
-        max-height: 200px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .country-name {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    .question-text {
-        font-size: 1rem;
-        color: #6c757d;
-    }
-
-    .answer-btn {
-        font-size: 1rem;
-        padding: 0.75rem 2rem;
-        border-radius: 8px;
-        transition: all 0.2s ease;
-        font-weight: 500;
-    }
-
-    .answer-btn:hover:not(:disabled) {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-left {
-        background-color: #3498db;
-        border-color: #3498db;
-    }
-
-    .btn-left:hover {
-        background-color: #2980b9;
-        border-color: #2980b9;
-    }
-
-    .btn-right {
-        background-color: #e74c3c;
-        border-color: #e74c3c;
-    }
-
-    .btn-right:hover {
-        background-color: #c0392b;
-        border-color: #c0392b;
-    }
-
-    .result-container {
-        display: none;
-        padding: 0.75rem;
-        text-align: center;
-        border-radius: 8px;
-        animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .result-container.correct {
-        background-color: #d4edda;
-        border: 2px solid #28a745;
-    }
-
-    .result-container.incorrect {
-        background-color: #f8d7da;
-        border: 2px solid #dc3545;
-    }
-
-    .result-message {
-        font-size: 1rem;
-        font-weight: 500;
-    }
-
-    .result-icon {
-        font-size: 1.5rem;
-    }
-
-    .card {
-        border: none;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .btn-reset {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/drills/common.css' %}">
+<link rel="stylesheet" href="{% static 'css/drills/driving_direction.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -174,13 +42,25 @@
                         <!-- Answer Buttons -->
                         <div class="row g-2 mb-3" id="answer-buttons">
                             <div class="col-6">
-                                <button class="btn btn-left answer-btn text-white w-100" onclick="checkAnswer('LHS')">
-                                    ← Left
+                                <button class="btn btn-left answer-btn text-white w-100" id="answer-left"
+                                    type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="me-1" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M15 8a.5.5 0 0 1-.5.5H3.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708.708L3.707 7.5H14.5A.5.5 0 0 1 15 8" />
+                                    </svg>
+                                    Left
                                 </button>
                             </div>
                             <div class="col-6">
-                                <button class="btn btn-right answer-btn text-white w-100" onclick="checkAnswer('RHS')">
-                                    Right →
+                                <button class="btn btn-right answer-btn text-white w-100" id="answer-right"
+                                    type="button">
+                                    Right
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="ms-1" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1 8a.5.5 0 0 1 .5-.5h10.793L9.146 4.354a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L12.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -201,9 +81,7 @@
                 <!-- Back to Home -->
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                        <a href="{% url 'home' %}" class="btn btn-sm btn-outline-secondary">
-                            ← Back to Home
-                        </a>
+                        <a href="{% url 'home' %}" class="btn btn-sm btn-outline-secondary">Back to Home</a>
                     </div>
                 </div>
             </div>
@@ -213,7 +91,7 @@
                 <!-- Stats Header with Reset Button -->
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="mb-0 text-muted small">Session Stats</h6>
-                    <button class="btn btn-outline-danger btn-reset" onclick="resetStats()">
+                    <button class="btn btn-outline-danger btn-reset" id="reset-stats" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
                             viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -278,135 +156,10 @@
 </div>
 
 <!-- LHS Countries Data -->
-<script type="application/json" id="lhs-countries-data">
-[
-    {% for country in lhs_countries %}
-        "{{ country.name }}"{% if not forloop.last %},{% endif %}
-    {% endfor %}
-]
-</script>
+{{ lhs_countries|json_script:"lhs-countries-data" }}
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    // Session stats
-    let correctAnswers = parseInt(sessionStorage.getItem('correctAnswers') || '0');
-    let totalQuestions = parseInt(sessionStorage.getItem('totalQuestions') || '0');
-
-    // Update stats display
-    function updateStats() {
-        document.getElementById('correct-count').textContent = correctAnswers;
-        document.getElementById('total-count').textContent = totalQuestions;
-
-        const accuracy = totalQuestions > 0
-            ? Math.round((correctAnswers / totalQuestions) * 100)
-            : 0;
-        document.getElementById('accuracy').textContent = accuracy + '%';
-    }
-
-    // Reset stats function
-    function resetStats() {
-        if (confirm('Are you sure you want to reset your stats?')) {
-            correctAnswers = 0;
-            totalQuestions = 0;
-            sessionStorage.setItem('correctAnswers', '0');
-            sessionStorage.setItem('totalQuestions', '0');
-            updateStats();
-        }
-    }
-
-    // Initialize stats on page load
-    updateStats();
-
-    // Populate LHS countries list
-    function populateLHSCountries() {
-        const lhsCountriesData = document.getElementById('lhs-countries-data');
-        const lhsCountries = JSON.parse(lhsCountriesData.textContent);
-
-        const paragraphElement = document.getElementById('lhs-countries-paragraph');
-        const countBadge = document.getElementById('lhs-count');
-
-        countBadge.textContent = lhsCountries.length;
-
-        if (lhsCountries.length === 0) {
-            paragraphElement.innerHTML = '<span class="text-muted">No left-hand drive countries found</span>';
-        } else {
-            paragraphElement.textContent = lhsCountries.join(', ');
-        }
-    }
-
-    // Initialize LHS countries list on page load
-    populateLHSCountries();
-
-    // Get current country data
-    const countryData = document.getElementById('country-data');
-    const correctAnswer = countryData.dataset.driveSide;
-    let hasAnswered = false;
-
-    function checkAnswer(selectedSide) {
-        document.getElementById('answer-buttons').classList.add('d-none');
-        if (hasAnswered) return;
-        hasAnswered = true;
-
-        // Update stats
-        totalQuestions++;
-        const isCorrect = selectedSide === correctAnswer;
-        if (isCorrect) {
-            correctAnswers++;
-        }
-
-        // Save to session storage
-        sessionStorage.setItem('correctAnswers', correctAnswers);
-        sessionStorage.setItem('totalQuestions', totalQuestions);
-        updateStats();
-
-        // Disable buttons
-        const buttons = document.querySelectorAll('.answer-btn');
-        buttons.forEach(btn => btn.disabled = true);
-
-        // Show compact result
-        const resultContainer = document.getElementById('result-container');
-        const resultMessage = document.getElementById('result-message');
-
-        const sideName = correctAnswer === 'LHS' ? 'left' : 'right';
-
-        if (isCorrect) {
-            resultContainer.className = 'result-container correct';
-            resultContainer.style.display = 'block';
-            resultMessage.innerHTML = `
-                <span class="result-icon" style="color: #28a745;">✓</span>
-                <span style="color: #155724;">Correct! ${countryData.dataset.country} drives on the ${sideName}</span>
-            `;
-        } else {
-            resultContainer.className = 'result-container incorrect';
-            resultContainer.style.display = 'block';
-            resultMessage.innerHTML = `
-                <span class="result-icon" style="color: #dc3545;">✗</span>
-                <span style="color: #721c24;">${countryData.dataset.country} drives on the <strong>${sideName}</strong></span>
-            `;
-        }
-
-        // Auto-advance to next question after 1.5 seconds
-        setTimeout(() => {
-            nextQuestion();
-        }, 1500);
-    }
-
-    function nextQuestion() {
-        window.location.reload();
-    }
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', function (e) {
-        if (!hasAnswered) {
-            if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-                e.preventDefault();
-                checkAnswer('LHS');
-            } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-                e.preventDefault();
-                checkAnswer('RHS');
-            }
-        }
-    });
-</script>
+<script src="{% static 'js/drills/common_stats.js' %}"></script>
+<script src="{% static 'js/drills/driving_direction.js' %}"></script>
 {% endblock %}

@@ -33,20 +33,40 @@ def driving_direction(request):
         # Only RHS countries exist (we know this list is not empty due to first check)
         country = random.choice(rhs_countries)
     
-    # Get all LHS countries sorted by name for the reference list
-    # Only load the name field for better performance
-    all_lhs_countries = Country.objects.filter(drive_side='LHS').only('name').order_by('name')
+    # Get all LHS country names sorted by name for the reference list
+    lhs_country_names = list(
+        Country.objects.filter(drive_side='LHS')
+        .order_by('name')
+        .values_list('name', flat=True)
+    )
     
     context = {
         'country': country,
-        'lhs_countries': all_lhs_countries,
+        'lhs_countries': lhs_country_names,
     }
     
     return render(request, 'drills/driving_direction.html', context)
 
 def fun_with_flags(request):
-    countries = Country.objects.all().only('name', 'flag_url').order_by('name')
+    # Get all countries for autocomplete
+    all_countries = list(Country.objects.all().only('name', 'flag_url'))
+
+    if not all_countries:
+        return HttpResponse(
+            '<h1>No countries found</h1>'
+            '<p>Please add countries to the database through the admin panel.</p>'
+            '<a href="/admin/">Go to Admin</a>',
+            status=404
+        )
+    
+    # Select a random country to display
+    country = random.choice(all_countries)
+    
+    # Get all country names for autocomplete (sorted)
+    all_country_names = sorted([c.name for c in all_countries])
+    
     context = {
-        'countries': countries,
+        'country': country,
+        'all_countries': all_country_names,
     }
     return render(request, 'drills/fun_with_flags.html', context)
