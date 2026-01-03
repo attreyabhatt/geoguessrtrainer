@@ -5,37 +5,95 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home/landing.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center g-4">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Drive-on-the-left-kent-1b.jpg" class="card-img-top" height="180"
-                    alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Driving Direction</h5>
-                    <p class="card-text">The direction of driving is an important factor in GeoGuessr. It is important to know which
-                        side of the road you should
-                        be driving on</p>
-                    <a href="{% url 'driving_direction' %}" class="btn btn-primary">Take a drive</a>
+<div class="container">
+    <section class="glass-panel p-4 p-lg-5 reveal">
+        <div class="row align-items-center g-4">
+            <div class="col-12 col-lg-6">
+                <span class="badge text-bg-light text-uppercase mb-3"
+                    style="letter-spacing: 2px; color: var(--primary-700);">Atlas ready</span>
+                <h1 class="display-5 fw-bold mb-3">Train your GeoGuessr instincts with cinematic drills.</h1>
+                <p class="lead text-muted mb-4">
+                    Build fast pattern recall with focused sessions in driving direction and flag recognition.
+                    Each drill adapts the pace so your confidence climbs with every click.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'driving_direction' %}" class="btn btn-neo">Start Driving Drill</a>
+                    <a href="{% url 'fun_with_flags' %}" class="btn btn-outline-neo">Start Flag Drill</a>
+                </div>
+                <div class="mt-4 d-flex flex-wrap gap-3 small text-muted">
+                    <span>Session stats saved locally</span>
+                    <span>Curated country list</span>
+                    <span>Keyboard-friendly drills</span>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="hero-grid">
+                    <div class="hero-tile hero-tile--primary">
+                        <h3 class="mb-2">Drive Side Mastery</h3>
+                        <p class="mb-0">Left vs right instincts trained with weighted randomness.</p>
+                    </div>
+                    <div class="hero-tile hero-tile--flag">
+                        <h3 class="mb-2">Flag Recall</h3>
+                        <p class="mb-0">Autocomplete aided memorization that fades the crutches.</p>
+                    </div>
+                    <div class="hero-tile hero-tile--map">
+                        <h3 class="mb-2">Street Sense</h3>
+                        <p class="mb-0">Build visual anchors you can reuse on every round.</p>
+                    </div>
+                    <div class="hero-tile hero-tile--stat">
+                        <h3 class="mb-2">Consistency</h3>
+                        <p class="mb-0">Track your accuracy streak inside each session.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="https://www.geoguessr.com/images/resize:auto:384:384/gravity:ce/plain/quiz/6b0b9a78859586ff998c120022f7ad82.jpg"
-                    class="card-img-top" height="180" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Fun with Flags</h5>
-                    <p class="card-text">Flags are a key element in GeoGuessr. Knowing the flags of different countries can make all the difference in identifying your location.</p>
-                    <a href="{% url 'fun_with_flags' %}" class="btn btn-primary">Guess the Flag</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+    </section>
 
+    <section class="mt-5">
+        <div class="row g-4">
+            <div class="col-12 col-lg-4">
+                <div class="drill-card reveal">
+                    <div class="drill-card__image" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80');"></div>
+                    <div class="drill-card__content">
+                        <h3 class="mb-2">Driving Direction</h3>
+                        <p class="text-muted">
+                            Train your reflex to spot which side of the road a country drives on. Weighted prompts
+                            help overlearn the trickiest regions.
+                        </p>
+                        <a class="btn btn-neo btn-sm" href="{% url 'driving_direction' %}">Take a drive</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="drill-card reveal" style="animation-delay: 0.1s;">
+                    <div class="drill-card__image" style="background-image: url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80');"></div>
+                    <div class="drill-card__content">
+                        <h3 class="mb-2">Fun With Flags</h3>
+                        <p class="text-muted">
+                            Flash through flags at a rhythm you control, then cement the names with autocomplete and
+                            instant feedback.
+                        </p>
+                        <a class="btn btn-neo btn-sm" href="{% url 'fun_with_flags' %}">Guess the flag</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="drill-card reveal" style="animation-delay: 0.2s;">
+                    <div class="drill-card__image" style="background-image: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80');"></div>
+                    <div class="drill-card__content">
+                        <h3 class="mb-2">Domain Drill</h3>
+                        <p class="text-muted">
+                            Train fast recognition of country domains and catch close-looking distractors.
+                        </p>
+                        <a class="btn btn-neo btn-sm" href="{% url 'domain_drill' %}">Match the domain</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}

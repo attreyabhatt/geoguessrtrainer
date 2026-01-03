@@ -1,0 +1,60 @@
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.hero-tile {
+    border-radius: 20px;
+    padding: 1.5rem;
+    min-height: 150px;
+    color: #fff;
+    box-shadow: var(--soft-shadow);
+    backdrop-filter: blur(6px);
+}
+
+.hero-tile--primary {
+    background: linear-gradient(135deg, #0f7c7e, #1db7b9);
+}
+
+.hero-tile--flag {
+    background: linear-gradient(135deg, #c2471b, #f08a3c);
+}
+
+.hero-tile--map {
+    background: linear-gradient(135deg, #4a7d9a, #7da9c1);
+}
+
+.hero-tile--stat {
+    background: linear-gradient(135deg, #6a4c93, #9c74c8);
+}
+
+.drill-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.drill-card__image {
+    min-height: 160px;
+    background-size: cover;
+    background-position: center;
+}
+
+.drill-card__content {
+    padding: 1.25rem;
+}
+
+@media (min-width: 992px) {
+    .drill-card {
+        flex-direction: row;
+        min-height: 200px;
+    }
+
+    .drill-card__image {
+        width: 42%;
+    }
+}

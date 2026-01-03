@@ -1,7 +1,7 @@
 .country-name {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--ink-900);
 }
 
 .answer-btn {
@@ -18,21 +18,19 @@
 }
 
 .btn-left {
-    background-color: #3498db;
-    border-color: #3498db;
+    background: linear-gradient(135deg, #0f7c7e, #1db7b9);
+    border-color: transparent;
 }
 
 .btn-left:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
+    background: linear-gradient(135deg, #0b5f60, #14989a);
 }
 
 .btn-right {
-    background-color: #e74c3c;
-    border-color: #e74c3c;
+    background: linear-gradient(135deg, #c2471b, #f08a3c);
+    border-color: transparent;
 }
 
 .btn-right:hover {
-    background-color: #c0392b;
-    border-color: #c0392b;
+    background: linear-gradient(135deg, #a93d17, #e35d2d);
 }

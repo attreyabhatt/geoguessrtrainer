@@ -1,20 +1,16 @@
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    flex: 1;
+.drill-shell {
     display: flex;
     align-items: center;
+    min-height: calc(100vh - 140px);
 }
 
 .stat-box {
     padding: 0.4rem 0.8rem;
-    background-color: #f8f9fa;
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
     text-align: center;
+    border: 1px solid rgba(31, 27, 46, 0.08);
+    box-shadow: var(--soft-shadow);
 }
 
 .stat-label {
@@ -27,7 +23,7 @@ body {
 .stat-value {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--ink-900);
 }
 
 .flag-image {
@@ -35,7 +31,7 @@ body {
     height: auto;
     max-height: 200px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--soft-shadow);
 }
 
 .question-text {
@@ -47,7 +43,7 @@ body {
     display: none;
     padding: 0.75rem;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 16px;
     animation: slideIn 0.3s ease-out;
 }
 
@@ -84,7 +80,9 @@ body {
 
 .card {
     border: none;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    background: var(--card);
 }
 
 .btn-reset {

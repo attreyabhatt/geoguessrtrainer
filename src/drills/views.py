@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Country
+from .domain_data import DOMAIN_DATA
 import random
 
 def driving_direction(request):
@@ -70,3 +71,17 @@ def fun_with_flags(request):
         'all_countries': all_country_names,
     }
     return render(request, 'drills/fun_with_flags.html', context)
+
+
+def domain_drill(request):
+    if not DOMAIN_DATA:
+        return HttpResponse(
+            '<h1>No domains found</h1>'
+            '<p>Please add domain data to the drill source.</p>',
+            status=404
+        )
+
+    context = {
+        'domain_data': DOMAIN_DATA,
+    }
+    return render(request, 'drills/domain_drill.html', context)

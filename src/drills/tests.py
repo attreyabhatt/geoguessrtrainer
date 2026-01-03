@@ -36,3 +36,8 @@ class DrillViewTests(TestCase):
         response = self.client.get(reverse("fun_with_flags"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Examplestan")
+
+    def test_domain_drill_view(self):
+        response = self.client.get(reverse("domain_drill"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Domain drill")

@@ -1,0 +1,26 @@
+.domain-display {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: 1px;
+}
+
+.option-btn {
+    font-weight: 600;
+    padding: 0.85rem 1.2rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(31, 27, 46, 0.12);
+    color: var(--ink-900);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--soft-shadow);
+}
+
+.option-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

@@ -1,31 +1,31 @@
 .answer-input {
     font-size: 1.1rem;
     padding: 0.75rem 1rem;
-    border-radius: 8px;
-    border: 2px solid #dee2e6;
+    border-radius: 14px;
+    border: 2px solid rgba(31, 27, 46, 0.12);
     transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .answer-input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 0.2rem rgba(20, 152, 154, 0.25);
 }
 
 .submit-btn {
     font-size: 1rem;
     padding: 0.75rem 2rem;
-    border-radius: 8px;
+    border-radius: 999px;
     transition: all 0.2s ease;
     font-weight: 500;
-    background-color: #3498db;
-    border-color: #3498db;
+    background: linear-gradient(135deg, #0f7c7e, #1db7b9);
+    border-color: transparent;
 }
 
 .submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: #2980b9;
-    border-color: #2980b9;
+    background: linear-gradient(135deg, #0b5f60, #14989a);
 }
 
 .submit-btn:disabled {
@@ -36,7 +36,7 @@
 .skip-btn {
     font-size: 0.9rem;
     padding: 0.5rem 1.5rem;
-    border-radius: 8px;
+    border-radius: 999px;
     transition: all 0.2s ease;
     font-weight: 500;
 }
@@ -53,7 +53,7 @@
     max-height: 200px;
     overflow-y: auto;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--soft-shadow);
 }
 
 .autocomplete-item {
